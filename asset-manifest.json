@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Finances-CRUD-React/static/css/main.f4bbd10b.chunk.css",
+    "main.js": "/Finances-CRUD-React/static/js/main.89358f64.chunk.js",
+    "main.js.map": "/Finances-CRUD-React/static/js/main.89358f64.chunk.js.map",
+    "runtime-main.js": "/Finances-CRUD-React/static/js/runtime-main.fcfff761.js",
+    "runtime-main.js.map": "/Finances-CRUD-React/static/js/runtime-main.fcfff761.js.map",
+    "static/js/2.5cda9a17.chunk.js": "/Finances-CRUD-React/static/js/2.5cda9a17.chunk.js",
+    "static/js/2.5cda9a17.chunk.js.map": "/Finances-CRUD-React/static/js/2.5cda9a17.chunk.js.map",
+    "index.html": "/Finances-CRUD-React/index.html",
+    "static/css/main.f4bbd10b.chunk.css.map": "/Finances-CRUD-React/static/css/main.f4bbd10b.chunk.css.map",
+    "static/js/2.5cda9a17.chunk.js.LICENSE.txt": "/Finances-CRUD-React/static/js/2.5cda9a17.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fcfff761.js",
+    "static/js/2.5cda9a17.chunk.js",
+    "static/css/main.f4bbd10b.chunk.css",
+    "static/js/main.89358f64.chunk.js"
+  ]
+}

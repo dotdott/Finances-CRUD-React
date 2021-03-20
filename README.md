@@ -14,3 +14,14 @@
 - ReactJS
 - TypeScript
 - Use of React Context API
+
+
+## install in ur machine
+- On a empty folder enter de followings:
+- ``git clone https://github.com/dotdott/Finances-CRUD-React.git``
+- rename the new folder that has been downloaded in your empty folder to all **lowercase**
+- in this case you could rename it to **finances-crud**, and then:
+- ``cd finances-crud``
+- ``npm i next react react-dom``
+- ``npm i typescript @types/react --save-dev``
+- After it finishes you can start the app with ``yarn dev``

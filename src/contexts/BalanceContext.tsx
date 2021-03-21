@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import Axios from 'axios';
 import { TransactionsContext } from "./TransactionsContext";
 
 interface BalanceContextData {
@@ -10,6 +11,9 @@ interface BalanceContextData {
     setIncome: React.Dispatch<React.SetStateAction<number>>;
     addBalance: (value: number) => void;
     removeBalance: (value: number) => void;
+    setValues: React.Dispatch<React.SetStateAction<any>>;
+    values: any[];
+    balance: () => void;
 }
 
 interface BalanceProviderProps{
@@ -25,6 +29,18 @@ function BalanceProvider({children}: BalanceProviderProps) {
 
     const [income, setIncome] = useState(0);
 
+    const [values, setValues] = useState<any[]>([]);
+
+    
+    useEffect(() => {
+        Axios.get('http://localhost:5000/balance/get')
+         .then(data => {
+             setValues(data.data)
+         })
+     }, [])
+
+
+
     function addBalance(value: number) {
         if(value > 0){
             setIncome(previousValue => previousValue + Number(value));
@@ -35,6 +51,16 @@ function BalanceProvider({children}: BalanceProviderProps) {
         }
     }
 
+    function balance(){
+        values.map(value => {
+            const newValue = Number(value.value).toFixed(2);
+            addBalance(Number(newValue));
+        });
+    }
+
+    useEffect(() => {
+        balance();
+    },[values])
 
     function removeBalance(value: number) {
         if(value > 0){
@@ -46,7 +72,6 @@ function BalanceProvider({children}: BalanceProviderProps) {
         }
     }
 
-
     return(
         <BalanceContext.Provider value={{
             setTotal,
@@ -56,7 +81,10 @@ function BalanceProvider({children}: BalanceProviderProps) {
             setExpense,
             setIncome,
             addBalance,
-            removeBalance
+            removeBalance,
+            setValues,
+            values,
+            balance
         }}>
             {children}
         </BalanceContext.Provider>

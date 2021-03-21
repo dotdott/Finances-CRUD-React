@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { TransactionsContext } from '../contexts/TransactionsContext';
 import Modal from './Modal';
 import NewTransaction from './NewTransaction';
@@ -11,14 +11,14 @@ const Transaction = () => {
         } = useContext(TransactionsContext);
 
 
-        const transactionList = addTrans.map(transaction => (
-            <NewTransaction 
+        const transactionList = addTrans.map((transaction: any) => (
+                <NewTransaction 
                 InputDescription={transaction.description}
-                InputAmount={transaction.amount}
+                InputAmount={transaction.value}
                 InputDate={transaction.date}
                 id={transaction.id}
-                key={transaction.key}
-            />
+                key={transaction.id}
+                />
             )
         )
 

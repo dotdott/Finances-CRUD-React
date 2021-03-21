@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { BalanceContext } from "./BalanceContext";
+import { createContext, ReactNode, useState } from "react";
 
 interface TransactionsProviderData{
     InputDescription: string;
@@ -10,7 +9,6 @@ interface TransactionsProviderData{
     setInputDate: React.Dispatch<React.SetStateAction<string>>;
     ModalActive: boolean;
     setModalActive: React.Dispatch<React.SetStateAction<boolean>>;
-    newTransaction: (description: any, amount: any, date: any, id: any) => void;
     addTrans: any[];
     setAddTrans: React.Dispatch<React.SetStateAction<any>>;
 }
@@ -34,19 +32,6 @@ export default function TransactionsProvider({children}: TransactionsProviderPro
     const [addTrans, setAddTrans]: 
     [any[], React.Dispatch<React.SetStateAction<any>>]  = useState([]);
 
-
-    function newTransaction(description: any, amount: number, date: any, id: any){
-        const newTrans = {
-            id: id,
-            key: id,
-            description: description,
-            amount: amount,
-            date: date
-        }
-        setAddTrans([... addTrans, newTrans]);
-    };
-    
-
     return(
         <TransactionsContext.Provider value={{
             InputDescription,
@@ -57,7 +42,6 @@ export default function TransactionsProvider({children}: TransactionsProviderPro
             setInputDate,
             ModalActive,
             setModalActive,
-            newTransaction,
             setAddTrans,
             addTrans
         }}>

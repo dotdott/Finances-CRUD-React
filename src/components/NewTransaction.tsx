@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BalanceContext } from '../contexts/BalanceContext';
 import { TransactionsContext } from '../contexts/TransactionsContext';
+import Axios from 'axios';
 
 interface NewTransactionProps{
     InputDescription: string;
@@ -15,17 +16,16 @@ const NewTransaction = ({
         InputDate, 
         id,
     }: NewTransactionProps) => {
-    const { addTrans, setAddTrans } = useContext(TransactionsContext);
-    const { removeBalance } = useContext(BalanceContext);
+    const { addTrans } = useContext(TransactionsContext);
+
+    const { removeBalance} = useContext(BalanceContext);
 
     function removeTransaction(id: any){
-        const value = addTrans.find(transaction => transaction.id === id);
-        removeBalance(value.amount);
+        const value = addTrans.find((transaction: any) => transaction.id === id);
+        removeBalance(value);
 
-        const updatedTrans = addTrans
-        .filter(transaction => transaction.id !== id);
-
-        setAddTrans(updatedTrans);
+        Axios.delete(`http://localhost:5000/balance/delete/${id}`)
+        Axios.delete(`http://localhost:5000/transaction/delete/${id}`)
     }
 
     return (

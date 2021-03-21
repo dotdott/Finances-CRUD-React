@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { BalanceContext } from '../contexts/BalanceContext';
 
-
 const Balance = () => {
     const { expense, income, total } = useContext(BalanceContext);
 
@@ -31,7 +30,7 @@ const Balance = () => {
                 <span>
                     Total
                 </span>
-                <img src='./assets/total.svg' alt="Imagem do Total"/>
+                <img src='/assets/total.svg' alt="Imagem do Total"/>
             </h3>
             <p id="totalDisplay">R$ {total}</p>
         </div>

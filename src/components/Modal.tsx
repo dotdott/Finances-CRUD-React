@@ -1,5 +1,5 @@
-import { nanoid } from 'nanoid';
-import React, { useContext } from 'react';
+import Axios from 'axios';
+import { useContext, useEffect } from 'react';
 import { BalanceContext } from '../contexts/BalanceContext';
 import { TransactionsContext } from '../contexts/TransactionsContext';
 
@@ -13,13 +13,11 @@ const Modal = () => {
             setInputAmount, 
             InputDate,
             setInputDate,
-            newTransaction
+            addTrans,
+            setAddTrans
         } = useContext(TransactionsContext);
 
-        const { addBalance } = useContext(BalanceContext);
-
-        const id = "transaction-" + nanoid();
-
+        const { balance } = useContext(BalanceContext);
 
         const setDescription = (e: any) => {
             setInputDescription(e.target.value)
@@ -42,18 +40,34 @@ const Modal = () => {
             setInputDate('');
         }
 
-        
         function addTransaction(e: any) {
             if(InputDescription === '' || InputDate === '' || InputAmount === 0){
                 alert('Preencha todos os campos Por favor!')
                 e.preventDefault();
             } else {
-                newTransaction(InputDescription, Number(InputAmount).toFixed(2), InputDate, id);
+                Axios.post('http://localhost:5000/transaction/add', {
+                    description: InputDescription,
+                    value: InputAmount,
+                    date: InputDate
+                })
                 setModalActive(false);
-                const value = Number(InputAmount).toFixed(2)
-                InputAmount > 0 ? addBalance(Number(value)) : addBalance(Number(value))
+
+                Axios.post('http://localhost:5000/balance/add', {
+                    value: InputAmount
+                })
             }
         }
+
+        useEffect(() => {
+            Axios.get('http://localhost:5000/transaction/get')
+            .then(result => {
+                setAddTrans(result.data);
+            });
+        }, [addTrans])
+
+        useEffect(() => {
+            balance();
+        }, [])
 
     return (        
         <div className="modal">     

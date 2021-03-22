@@ -12,7 +12,7 @@ const Balance = () => {
                 <span>
                 Entradas
                 </span>
-                <img src='./assets/income.svg' alt="Imagem de Entradas"/>
+                <img src={process.env.PUBLIC_URL + '/assets/income.svg'} alt="Imagem de Entradas"/>
             </h3>
             <p id="incomeDisplay">R$ {income}</p>
         </div>
@@ -21,7 +21,7 @@ const Balance = () => {
                 <span>
                     Saídas
                 </span>
-                <img src='./assets/minus.svg' alt="Imagem de Saídas"/>
+                <img src={process.env.PUBLIC_URL + '/assets/minus.svg'} alt="Imagem de Saídas"/>
             </h3>
             <p id="expenseDisplay">R$ {expense}</p>
         </div>
@@ -30,7 +30,7 @@ const Balance = () => {
                 <span>
                     Total
                 </span>
-                <img src='/assets/total.svg' alt="Imagem do Total"/>
+                <img src={process.env.PUBLIC_URL + '/assets/total.svg'} alt="Imagem do Total"/>
             </h3>
             <p id="totalDisplay">R$ {total}</p>
         </div>

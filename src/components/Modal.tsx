@@ -40,26 +40,28 @@ const Modal = () => {
             setInputDate('');
         }
 
+        const db = 'https://crud-finances-heroku.herokuapp.com';
+
         function addTransaction(e: any) {
             if(InputDescription === '' || InputDate === '' || InputAmount === 0){
                 alert('Preencha todos os campos Por favor!')
                 e.preventDefault();
             } else {
-                Axios.post('http://localhost:5000/transaction/add', {
+                Axios.post(db + '/transaction/add', {
                     description: InputDescription,
                     value: InputAmount,
                     date: InputDate
                 })
                 setModalActive(false);
 
-                Axios.post('http://localhost:5000/balance/add', {
+                Axios.post(db + '/balance/add', {
                     value: InputAmount
                 })
             }
         }
 
         useEffect(() => {
-            Axios.get('http://localhost:5000/transaction/get')
+            Axios.get(db + '/transaction/get')
             .then(result => {
                 setAddTrans(result.data);
             });

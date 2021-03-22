@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'Kur0k0123',
-    database: 'crud-finances'
+    host: 'us-cdbr-east-03.cleardb.com',
+    user: 'bc84b0945f8f56',
+    password: '400ac278',
+    database: 'heroku_b31b426587faa7f'
 })
 
 module.exports = pool;

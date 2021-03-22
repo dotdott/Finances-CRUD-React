@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <img src='./assets/logo.svg' alt="logo"/>
+        <img src={process.env.PUBLIC_URL + '/assets/logo.svg'} alt="logo"/>
       </header>
 
       <main className="container">

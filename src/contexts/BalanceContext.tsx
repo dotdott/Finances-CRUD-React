@@ -31,9 +31,10 @@ function BalanceProvider({children}: BalanceProviderProps) {
 
     const [values, setValues] = useState<any[]>([]);
 
-    
+    const db = 'https://crud-finances-heroku.herokuapp.com';
+
     useEffect(() => {
-        Axios.get('http://localhost:5000/balance/get')
+        Axios.get(db + '/balance/get')
          .then(data => {
              setValues(data.data)
          })

@@ -20,12 +20,14 @@ const NewTransaction = ({
 
     const { removeBalance} = useContext(BalanceContext);
 
+    const db = 'https://crud-finances-heroku.herokuapp.com';
+
     function removeTransaction(id: any){
         const value = addTrans.find((transaction: any) => transaction.id === id);
         removeBalance(value);
 
-        Axios.delete(`http://localhost:5000/balance/delete/${id}`)
-        Axios.delete(`http://localhost:5000/transaction/delete/${id}`)
+        Axios.delete(db + `/balance/delete/${id}`)
+        Axios.delete(db + `/transaction/delete/${id}`)
     }
 
     return (
@@ -35,7 +37,7 @@ const NewTransaction = ({
             <td className="date">{InputDate}</td>
             <td>
                 <img 
-                    src='./assets/minus.svg' 
+                    src={process.env.PUBLIC_URL + '/assets/minus.svg'}
                     alt="Remover transação"
                     onClick={() => removeTransaction(id)}
                 />
